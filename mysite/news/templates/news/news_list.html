@@ -14,22 +14,17 @@
         Category: <a href="{{ item.category.get_absolute_url }}">{{ item.category.title }}</a>
     </div>
     <div class="card-body">
-        <div class="media">
-            <div class="row">
-                <div class="col-md-3">
-                    {% if item.photo %}
-                    <img src="{{ item.photo.url }}" alt="" width="220" class="mr-3">
-                    {% else %}
-                    <img src="https://picsum.photos/id/1060/220/200/?blur=2" alt="" class="mr-3">
-                    {% endif %}
-                </div>
-                <div class="col">
-                    <div class="media-body">
-                        <h5 class="card-title">{{ item.title }}</h5>
-                        <p class="card-text">{{ item.content|linebreaks|truncatewords:70 }}</p>
-                        <a href="{{ item.get_absolute_url }}" class="btn btn-primary">Read more...</a>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-md-3">
+                {% if item.photo %}
+                <img src="{{ news_item.photo.url }}" alt="" width="220" class="float-left mr-3">
+                {% else %}
+                <img src="https://picsum.photos/id/1060/220/200/?blur=2" alt="" class="float-left mr-3">
+                {% endif %}
+            </div>
+            <div class="col">
+                <h5 class="card-title">{{ news_item.title }}</h5>
+                <p class="card-text">{{ news_item.content|linebreaks }}</p>
             </div>
         </div>
     </div>
@@ -37,5 +32,3 @@
         {{ item.created_at|date:"Y-m-d H:i" }}
     </div>
 </div>
-{% endfor %}
-{% endblock %}
